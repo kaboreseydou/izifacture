@@ -32,7 +32,7 @@ export default function LoginPage() {
       if (data.session) {
         setSuccessMsg("Connexion réussie ! Redirection...");
         setTimeout(() => {
-          router.push("/");
+          router.push("/dashboard");
           router.refresh();
         }, 1000);
       }

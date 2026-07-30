@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useApp } from "@/lib/context/app-context";
 import { Loader2 } from "lucide-react";
 
-const PUBLIC_PATHS = ["/login", "/register"];
+const PUBLIC_PATHS = ["/", "/login", "/register"];
 
 export function AuthGuard({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

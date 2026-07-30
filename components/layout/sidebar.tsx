@@ -43,7 +43,7 @@ export function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
   };
 
   const navItems = [
-    { label: "Tableau de bord", href: "/", icon: LayoutDashboard },
+    { label: "Tableau de bord", href: "/dashboard", icon: LayoutDashboard },
     { label: "Factures", href: "/factures", icon: FileText },
     { label: "Clients", href: "/clients", icon: Users },
   ];
@@ -67,7 +67,7 @@ export function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
         <div className="flex flex-col h-full bg-[#f4f5f8] dark:bg-gray-900 border-r border-gray-200/70 dark:border-gray-800 w-64 p-4 transition-all duration-300 select-none">
           {/* Brand Header */}
           <div className="flex items-center justify-between px-2 py-2 mb-4">
-            <Link href="/" className="flex items-center gap-2.5 group">
+            <Link href="/dashboard" className="flex items-center gap-2.5 group">
               <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
                 <Sparkles className="w-4 h-4 fill-white" />
               </div>
@@ -100,8 +100,8 @@ export function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive =
-                    item.href === "/"
-                      ? pathname === "/"
+                    item.href === "/dashboard"
+                      ? pathname === "/dashboard"
                       : pathname.startsWith(item.href);
 
                   return (
@@ -224,7 +224,7 @@ export function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
           <div className="relative z-10">
             <div className="flex flex-col h-full bg-[#f4f5f8] dark:bg-gray-900 border-r border-gray-200/70 dark:border-gray-800 w-64 p-4">
               <div className="flex items-center justify-between px-2 py-2 mb-4">
-                <Link href="/" className="flex items-center gap-2.5">
+                <Link href="/dashboard" className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black shadow-md">
                     <Sparkles className="w-4 h-4 fill-white" />
                   </div>
