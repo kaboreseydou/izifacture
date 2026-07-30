@@ -8,19 +8,16 @@ import {
   Plus,
   ChevronRight,
   Globe,
-  Sparkles,
 } from "lucide-react";
 
 interface TopbarProps {
   onMobileMenuOpen: () => void;
   title?: string;
-  subtitle?: string;
 }
 
 export function Topbar({
   onMobileMenuOpen,
   title = "Tableau de bord",
-  subtitle = "Aperçu en temps réel de votre activité financière",
 }: TopbarProps) {
   return (
     <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/80 dark:border-gray-800 sticky top-0 z-30 px-4 md:px-8 py-3.5 flex items-center justify-between transition-colors">

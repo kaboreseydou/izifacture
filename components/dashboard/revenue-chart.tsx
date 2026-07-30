@@ -12,10 +12,15 @@ import {
 } from "recharts";
 import { RevenueDataPoint } from "@/lib/data/mock/fixtures";
 import { formatFCFA } from "@/lib/utils";
-import { TrendingUp, Calendar, ArrowUpRight } from "lucide-react";
 
 interface RevenueChartProps {
   data: RevenueDataPoint[];
+}
+
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<{ value: number }>;
+  label?: string;
 }
 
 export function RevenueChart({ data }: RevenueChartProps) {
@@ -28,7 +33,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
   const totalPeriodBilled = data.reduce((acc, item) => acc + item.facture, 0);
   const totalPeriodPaid = data.reduce((acc, item) => acc + item.encaisse, 0);
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 text-xs">
@@ -38,14 +43,14 @@ export function RevenueChart({ data }: RevenueChartProps) {
               <span className="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block" />
               <span className="text-gray-500">Facturé :</span>
               <span className="font-bold text-gray-900 dark:text-white">
-                {formatFCFA(payload[0]?.value || 0)}
+                {formatFCFA(Number(payload[0]?.value || 0))}
               </span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
               <span className="text-gray-500">Encaissé :</span>
               <span className="font-bold text-gray-900 dark:text-white">
-                {formatFCFA(payload[1]?.value || 0)}
+                {formatFCFA(Number(payload[1]?.value || 0))}
               </span>
             </div>
           </div>
@@ -60,14 +65,9 @@ export function RevenueChart({ data }: RevenueChartProps) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <h2 className="text-base font-bold text-gray-900 dark:text-white">
-              Évolution du Chiffre d'Affaires
-            </h2>
-            <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
-              UEMOA/CEMAC
-            </span>
-          </div>
+          <h2 className="text-base font-bold text-gray-900 dark:text-white mb-0.5">
+            Évolution du Chiffre d&apos;Affaires
+          </h2>
           <p className="text-xs text-gray-400">
             Comparatif entre montants facturés et encaissements réels sur 6 mois
           </p>

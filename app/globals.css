@@ -61,3 +61,44 @@ body {
 .sidebar-shadow {
   box-shadow: 1px 0 0 rgba(226, 232, 240, 0.8);
 }
+
+/* Professional Clean Invoice Print & PDF Styles */
+@media print {
+  /* Hide every element on the page by default */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Make only the clean invoice container and its children visible */
+  .print-clean-invoice,
+  .print-clean-invoice * {
+    visibility: visible !important;
+  }
+
+  /* Position clean invoice at top-left (0,0) of printed page */
+  .print-clean-invoice {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 15mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Hide interactive controls inside the invoice */
+  .no-print,
+  button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+}

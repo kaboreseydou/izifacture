@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { AppProvider } from "@/lib/context/app-context";
+import { AuthGuard } from "@/components/shared/auth-guard";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 export const metadata: Metadata = {
   title: "facture.izi — SaaS de facturation UEMOA / CEMAC",
@@ -19,9 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${inter.variable}`}>
-      <body className="bg-[#f7f8fc] dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen antialiased selection:bg-blue-600 selection:text-white">
-        {children}
+    <html lang="fr">
+      <body className="bg-[#f7f8fc] dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen antialiased selection:bg-blue-600 selection:text-white font-sans">
+        <AppProvider>
+          <AuthGuard>{children}</AuthGuard>
+        </AppProvider>
       </body>
     </html>
   );
